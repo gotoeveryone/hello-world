@@ -13,7 +13,7 @@ trim_trailing_whitespace = true
 [*.bat]
 end_of_line = crlf
 
-[*.{py,go,java,kt}]
+[*.{py,go,java,kt,php}]
 indent_size = 4
 
 [*.md]
