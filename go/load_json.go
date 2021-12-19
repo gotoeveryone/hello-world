@@ -8,6 +8,11 @@ import (
 	"path/filepath"
 )
 
+type Config struct {
+	Id   int
+	Name string
+}
+
 func main() {
 	exe, err := os.Getwd()
 	if err != nil {
@@ -15,16 +20,13 @@ func main() {
 		os.Exit(1)
 	}
 
-	jsonValue, err := ioutil.ReadFile(filepath.Join(exe, "test.json"))
+	jsonValue, err := ioutil.ReadFile(filepath.Join(exe, "../test.json"))
 	if err != nil {
 		fmt.Println(fmt.Errorf("Read file error: %s", err))
 		os.Exit(1)
 	}
 
-	var config []struct{
-		Id int
-		Name string
-	}
+	var config []Config
 	if err := json.Unmarshal(jsonValue, &config); err != nil {
 		fmt.Println(fmt.Errorf("Unmarshal error: %s", err))
 		os.Exit(1)
